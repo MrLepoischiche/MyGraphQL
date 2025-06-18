@@ -1,0 +1,45 @@
+.user-data {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-box {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.main-box svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.main-box text {
+    font-family: Arial, sans-serif;
+    fill: #333;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.error {
+    color: red;
+    padding: 10px;
+    background-color: #ffebee;
+    border-radius: 4px;
+}

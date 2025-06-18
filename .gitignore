@@ -1,4 +1,6 @@
 # ---> Node
+package*.json
+
 # Logs
 logs
 *.log
@@ -144,3 +146,6 @@ dist
 # Built Visual Studio Code Extensions
 *.vsix
 
+# ---> Configs
+# Local configuration files
+*.config.js
