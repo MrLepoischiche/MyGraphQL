@@ -92,6 +92,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
+dist
 
 # Gatsby files
 .cache/
@@ -148,3 +149,7 @@ out
 # ---> Configs
 # Local configuration files
 *.config.js
+
+# ---> Netlify
+# Netlify configuration files
+.netlify
