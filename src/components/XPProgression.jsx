@@ -1,6 +1,6 @@
 import '../styles/XPProgression.css';
 
-export default function XPProgression({ xpData, width, shortenPath }) {
+export default function XPProgression({ xpData, width, shortenPath, shortenXP }) {
     // Trier les données par date et calculer le cumul
     const sortedData = [...xpData]
         .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
@@ -82,7 +82,7 @@ export default function XPProgression({ xpData, width, shortenPath }) {
                                 {'\n'}
                                 {new Date(data.createdAt).toLocaleDateString()}
                                 {'\n'}
-                                Total XP: {data.total.toLocaleString()}
+                                Total XP: {shortenXP(data.total)}
                             </title>
                         </circle>
                     ))}
@@ -96,7 +96,7 @@ export default function XPProgression({ xpData, width, shortenPath }) {
                     <div className="text-xs text-gray-500">Début</div>
                 </div>
                 <div className="text-center font-semibold">
-                    <div>{maxXP.toLocaleString()} XP</div>
+                    <div>{shortenXP(maxXP)}</div>
                     <div className="text-xs text-gray-500">Total</div>
                 </div>
                 <div className="text-right">

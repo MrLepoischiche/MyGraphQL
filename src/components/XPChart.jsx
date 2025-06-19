@@ -1,6 +1,6 @@
 import '../styles/XPChart.css';
 
-export default function XPChart({ xpData, shortenPath }) {
+export default function XPChart({ xpData, shortenPath, shortenXP }) {
     // Trier les données par date
     const sortedData = [...xpData].sort((a, b) => 
         new Date(a.createdAt) - new Date(b.createdAt)
@@ -50,7 +50,7 @@ export default function XPChart({ xpData, shortenPath }) {
                                 <title>
                                     {new Date(xp.createdAt).toLocaleDateString()}
                                     {'\n'}
-                                    {xp.amount} XP
+                                    {shortenXP(xp.amount)}
                                     {'\n'}
                                     {shortenPath(xp.path)}
                                 </title>

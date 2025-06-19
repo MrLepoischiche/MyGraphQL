@@ -81,6 +81,22 @@ function ShortenPath(path) {
     return String(path).replace(/\/rouen\/div-01\//, '');
 }
 
+function ShortenXP(amount) {
+    const steps = ['', 'k', 'M', 'G', 'T'];
+    let step = 0;
+
+    while (amount >= 1000 && step < steps.length - 1) {
+        amount /= 1000;
+        step++;
+    }
+    if (amount < 0.1 && step > 0) {
+        amount *= 1000;
+        step--;
+    }
+
+    return `${(amount % 1 === 0 ? amount : amount.toFixed(2))} ${steps[step]}B`;
+}
+
 export default function Home({ user, onUser }) {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -170,8 +186,8 @@ export default function Home({ user, onUser }) {
                     ) : (
                         <div className="user-data">
                             <section className="mt-5 mb-15 text-center text-2xl">
-                                <p>ID {userData.id} : {userData.firstName} {userData.lastName} ({userData.email})</p>
-                                <p>Campus de {Capitalize(userData.campus)}</p>
+                                <p>ID {userData.id} : <strong>{userData.firstName} {userData.lastName}</strong> ({userData.email})</p>
+                                <p>Campus de <strong>{Capitalize(userData.campus)}</strong></p>
                             </section>
 
                             <section className="main-box">
@@ -181,8 +197,9 @@ export default function Home({ user, onUser }) {
                                     auditCount={userData.audits.length}
                                     totalUp={userData.totalUp}
                                     totalDown={userData.totalDown}
+                                    shortenXP={ShortenXP}
                                 />
-                                <p>XP Totale: {userData.xpTotal.aggregate.sum.amount}</p>
+                                <p>XP Totale: {ShortenXP(userData.xpTotal.aggregate.sum.amount)} ({userData.xpTotal.aggregate.sum.amount} B)</p>
                             </section>
 
                             <section className="main-box">
@@ -190,38 +207,29 @@ export default function Home({ user, onUser }) {
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <SkillsChart skills={userData.skills} width={550} height={550} />
                                 </div>
-                                <ul>
-                                    {userData.skills.map((skill, index) => (
-                                        <li key={index}>
-                                            {Capitalize(skill.type.replace('skill_', ''))}: {skill.amount}
-                                        </li>
-                                    ))}
-                                </ul>
                             </section>
 
                             <section className="main-box">
-                                <h2>XP Récente</h2>
+                                <h2>Graphique de Progression</h2>
 
                                 <div ref={chartContainerRef}>
                                     <XPProgression 
                                         xpData={userData.xp} 
                                         width={XPChartWidth}
                                         shortenPath={ShortenPath}
+                                        shortenXP={ShortenXP}
                                     />
                                 </div>
+                                
+                                <br />
+
+                                <h2>XP par Projet Audité</h2>
 
                                 <XPChart
                                     xpData={userData.xp}
                                     shortenPath={ShortenPath}
+                                    shortenXP={ShortenXP}
                                 />
-
-                                <ul>
-                                    {userData.xp.map((xp) => (
-                                        <li key={xp.id}>
-                                            {new Date(xp.createdAt).toLocaleDateString()} : <strong>{xp.amount} XP</strong> avec <strong>{ShortenPath(xp.path)}</strong>
-                                        </li>
-                                    ))}
-                                </ul>
                             </section>
 
                             <section className="main-box">

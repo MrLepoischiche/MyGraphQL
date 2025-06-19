@@ -1,6 +1,6 @@
 import '../styles/AuditBar.css';
 
-export default function AuditBar({ totalUp, totalDown, auditRatio, auditCount }) {
+export default function AuditBar({ totalUp, totalDown, auditRatio, auditCount, shortenXP }) {
     const total = totalUp + totalDown;
     const upPercentage = (totalUp / total) * 100;
     const downPercentage = (totalDown / total) * 100;
@@ -14,13 +14,13 @@ export default function AuditBar({ totalUp, totalDown, auditRatio, auditCount })
                     className="up-section"
                     style={{ width: `${upPercentage}%` }}
                 >
-                    {totalUp} bytes
+                    {(shortenXP ? shortenXP(totalUp) : `${totalUp} B`)} {(shortenXP ? `(${totalUp} B)` : '')}
                 </div>
                 <div 
                     className="down-section"
                     style={{ width: `${downPercentage}%` }}
                 >
-                    {totalDown} bytes
+                    {(shortenXP ? shortenXP(totalDown) : `${totalDown} B`)} {(shortenXP ? `(${totalDown} B)` : '')}
                 </div>
             </div>
             <div className="audit-ratio">

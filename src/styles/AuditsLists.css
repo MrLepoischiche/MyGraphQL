@@ -51,3 +51,41 @@
     color: #666;
     font-size: 0.9em;
 }
+
+.expand-button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.succeeded .expand-button {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+}
+
+.succeeded .expand-button:hover {
+    background-color: rgba(76, 175, 80, 0.2);
+}
+
+.failed .expand-button {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+.failed .expand-button:hover {
+    background-color: rgba(244, 67, 54, 0.2);
+}
+
+.pending .expand-button {
+    background-color: rgba(255, 167, 38, 0.1);
+    color: #FFA726;
+}
+
+.pending .expand-button:hover {
+    background-color: rgba(255, 167, 38, 0.2);
+}
