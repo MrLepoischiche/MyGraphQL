@@ -1,5 +1,5 @@
 .user-data {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -13,7 +13,6 @@
 
 .main-box svg {
     max-width: 100%;
-    height: auto;
 }
 
 .main-box text {

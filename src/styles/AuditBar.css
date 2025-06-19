@@ -1,0 +1,36 @@
+.audit-bar-container {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.audit-bar {
+    display: flex;
+    height: 2rem;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.up-section {
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease;
+}
+
+.down-section {
+    background-color: #f44336;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease;
+}
+
+.audit-ratio {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}

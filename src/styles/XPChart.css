@@ -1,0 +1,23 @@
+.xp-chart {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.xp-chart svg {
+    width: 100%;
+    height: 200px;
+    background-color: white;
+}
+
+.xp-chart rect {
+    transition: opacity 0.2s;
+}
+
+.xp-chart rect:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
