@@ -3,14 +3,11 @@ export default function SkillsChart({ skills, width, height }) {
     const centerY = height / 2;
     const maxRadius = 180;
     
-    // Trouver la valeur maximale pour l'échelle
-    const maxValue = Math.max(...skills.map(skill => skill.amount));
-    
     // Calculer les points pour chaque compétence
     const getPoints = () => {
         const points = skills.map((skill, index) => {
             const angle = (index * 2 * Math.PI) / skills.length - Math.PI / 2;
-            const radius = (skill.amount / maxValue) * maxRadius;
+            const radius = (skill.amount / 100) * maxRadius;
             return {
                 x: centerX + radius * Math.cos(angle),
                 y: centerY + radius * Math.sin(angle)
