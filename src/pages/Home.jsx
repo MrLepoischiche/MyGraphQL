@@ -162,7 +162,7 @@ export default function Home({ user, onUser }) {
     const handleLogout = () => {
         onUser(null);
         localStorage.removeItem("user");
-        navigate("/auth", { replace: true });
+        navigate("/", { replace: true });
     }
 
     return (
@@ -203,10 +203,11 @@ export default function Home({ user, onUser }) {
                             </section>
 
                             <section className="main-box">
-                                <h2>Compétences</h2>
-                                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    <SkillsChart skills={userData.skills} width={550} height={550} />
-                                </div>
+                                <h2>Audits récents</h2>
+                                <AuditsLists
+                                    audits={userData.audits}
+                                    shortenPath={ShortenPath}   
+                                />
                             </section>
 
                             <section className="main-box">
@@ -233,11 +234,10 @@ export default function Home({ user, onUser }) {
                             </section>
 
                             <section className="main-box">
-                                <h2>Audits récents</h2>
-                                <AuditsLists
-                                    audits={userData.audits}
-                                    shortenPath={ShortenPath}   
-                                />
+                                <h2>Compétences</h2>
+                                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                    <SkillsChart skills={userData.skills} width={550} height={550} />
+                                </div>
                             </section>
                         </div>
                     )}
